@@ -4,22 +4,21 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                // Pulls the code from your GitHub main branch
                 checkout scm
             }
         }
 
         stage('Install Dependencies') {
             steps {
-                // For Windows nodes, change 'sh' to 'bat'
-                sh 'pip install -r requirements.txt'
+                // Changed from 'sh' to 'bat' for Windows execution
+                bat 'pip install -r requirements.txt'
             }
         }
 
         stage('Build and Test') {
             steps {
-                // Runs your Python test suite
-                sh 'pytest' 
+                // Changed from 'sh' to 'bat' for Windows execution
+                bat 'python -m pytest test_app.py'
             }
         }
     }
